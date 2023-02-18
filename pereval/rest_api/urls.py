@@ -11,7 +11,7 @@ router.register('added', AddedViewSet)
 router.register('images', ImagesViewSet)
 
 urlpatterns = [
-    path('added/', AddedListView.as_view())
+    path('added_list/<email>', AddedListView.as_view())
 ]
 
 

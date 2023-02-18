@@ -1,5 +1,5 @@
 from django.db import models
-from .resource import MODERATOR_STATUS
+from .resource import ModeratorStatus
 
 
 
@@ -42,7 +42,14 @@ class PerevalAdded(models.Model):
     autumn = models.CharField(max_length=50, verbose_name='Осень', blank=True, null=True)
     spring = models.CharField(max_length=50, verbose_name='Весна', blank=True, null=True)
 
-    status = models.CharField(max_length=50, choices=MODERATOR_STATUS, default=MODERATOR_STATUS[0])
+    status = models.SmallIntegerField(default=ModeratorStatus.new, choices=ModeratorStatus.choices)
+
+    @property
+    def is_new(self):
+        return self.status == ModeratorStatus.new
+
+    def __str__(self):
+        return f'{self.title} {self.status}'
 
 
 class PerevalImages(models.Model):

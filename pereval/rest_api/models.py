@@ -31,7 +31,7 @@ class PerevalAdded(models.Model):
     date_added = models.DateTimeField(auto_now=True)
     add_time = models.DateTimeField(auto_now=True)
 
-    beautyTitle = models.CharField(max_length=100, blank=True, null=True)
+    beauty_title = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
     other_titles = models.CharField(max_length=100, blank=True, null=True)
     connect = models.CharField(max_length=100, blank=True, null=True)
@@ -55,6 +55,7 @@ class PerevalAdded(models.Model):
 class PerevalImages(models.Model):
     date = models.ForeignKey(PerevalAdded, on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True)
+    title = models.CharField(max_length=100, blank=True, null=True)
 
 
 class SprActivitiesTypes(models.Model):

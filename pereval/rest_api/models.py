@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from .resource import ModeratorStatus
 
 
@@ -51,9 +52,24 @@ class PerevalAdded(models.Model):
     def __str__(self):
         return f'{self.title} {self.status}'
 
+    def set_level(self, **kwargs):
+        self.winter = kwargs.get('winter', '')
+        self.summer = kwargs.get('summer', '')
+        self.autumn = kwargs.get('autumn', '')
+        self.spring = kwargs.get('spring', '')
+        self.save()
+
+    def get_level(self):
+        dic_level = {}
+        dic_level['winter'] = self.winter
+        dic_level['summer'] = self.summer
+        dic_level['autumn'] = self.autumn
+        dic_level['spring'] = self.spring
+        return dic_level
+
 
 class PerevalImages(models.Model):
-    date = models.ForeignKey(PerevalAdded, on_delete=models.CASCADE, blank=True, null=True)
+    data_img = models.ForeignKey(PerevalAdded, on_delete=models.CASCADE, related_name='image', blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True)
     title = models.CharField(max_length=100, blank=True, null=True)
 

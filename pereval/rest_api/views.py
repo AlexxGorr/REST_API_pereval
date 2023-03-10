@@ -72,13 +72,13 @@ class ImagesViewSet(ModelViewSet):
 #     serializer_class = AddedUpdateSerializer
 
 
-class AddedListView(ListAPIView):
-    queryset = PerevalAdded.objects.all()
-    serializer_class = AddedSerializer
-
-    # def get_queryset(self):
-    #     email = self.kwargs['email']
-    #     return PerevalAdded.objects.filter(user_tourist__email=email)
+# class AddedListView(ListAPIView):
+#     queryset = PerevalAdded.objects.all()
+#     serializer_class = AddedSerializer
+#
+#     def get_queryset(self):
+#         email = self.kwargs['email']
+#         return PerevalAdded.objects.filter(user_tourist__email=email)
 
 
 
